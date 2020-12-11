@@ -15,7 +15,12 @@ object Input {
 object Lists {
     fun <T> List<T>.genCombinations(num: Int): List<List<T>> =
         if (num == 1) this.map(::listOf)
-        else this.flatMap { comb -> genCombinations(num - 1).filter { it !=  comb}.map { listOf(comb) + it }}
+        else this.flatMap { comb -> genCombinations(num - 1).map { listOf(comb) + it }}
+
+    fun <T> List<T>.inspect(): List<T> = this.map {
+        println(it)
+        it
+    }
 
 }
 

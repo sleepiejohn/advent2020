@@ -1,4 +1,8 @@
 import Lists.genCombinations
+import java.util.*
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
+import kotlin.system.measureTimeMillis
 
 object Day1 : Day<Int> {
     override fun number() = 1
@@ -13,6 +17,7 @@ object Day1 : Day<Int> {
 
     private fun List<Int>.multiplyCombinationsSummingGoal(combinations: Int) =
         this.genCombinations(combinations).multiplySummingGoal(2020)
+
 
     private fun List<List<Int>>.multiplySummingGoal(goal: Int): Int {
         return this.find { it.sum() == goal }?.reduce { acc, i -> acc * i } ?: 0
